@@ -1,0 +1,114 @@
+.menu {
+  padding: 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.menu h1 {
+  text-align: center;
+  margin-bottom: 2rem;
+  color: #333;
+}
+
+.categories {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  margin-bottom: 2rem;
+  flex-wrap: wrap;
+}
+
+.categoryButton {
+  padding: 0.5rem 1.5rem;
+  border: 2px solid #ff6b6b;
+  border-radius: 25px;
+  background: none;
+  color: #ff6b6b;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.categoryButton:hover {
+  background: #ff6b6b;
+  color: white;
+}
+
+.categoryButton.active {
+  background: #ff6b6b;
+  color: white;
+}
+
+.menuGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 2rem;
+}
+
+.menuItem {
+  background: white;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease;
+}
+
+.menuItem:hover {
+  transform: translateY(-5px);
+}
+
+.itemImage {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+}
+
+.itemInfo {
+  padding: 1.5rem;
+}
+
+.itemInfo h3 {
+  margin: 0 0 0.5rem 0;
+  color: #333;
+  font-size: 1.2rem;
+}
+
+.description {
+  color: #666;
+  font-size: 0.9rem;
+  margin-bottom: 1rem;
+  line-height: 1.4;
+}
+
+.priceAndButton {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 1rem;
+}
+
+.price {
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: #ff6b6b;
+}
+
+@media (max-width: 768px) {
+  .menu {
+    padding: 1rem;
+  }
+
+  .menuGrid {
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 1rem;
+  }
+
+  .categories {
+    gap: 0.5rem;
+  }
+
+  .categoryButton {
+    padding: 0.4rem 1rem;
+    font-size: 0.9rem;
+  }
+} 
