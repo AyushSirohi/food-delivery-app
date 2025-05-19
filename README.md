@@ -26,24 +26,6 @@ A modern and responsive food delivery application built with React.js and TypeSc
 - Node.js (v14 or higher)
 - npm (v6 or higher)
 
-### Installation
-
-1. Clone the repository:
-```bash
-git clone <repository-url>
-cd food-delivery-app
-```
-
-2. Install dependencies:
-```bash
-npm install
-```
-
-3. Start the development server:
-```bash
-npm start
-```
-
 The application will be available at `http://localhost:3000`.
 
 ## Project Structure
@@ -95,14 +77,6 @@ src/
 - Implement search functionality
 - Add user reviews and ratings
 - Implement dark mode
-
-## Contributing
-
-1. Fork the repository
-2. Create your feature branch (`git checkout -b feature/AmazingFeature`)
-3. Commit your changes (`git commit -m 'Add some AmazingFeature'`)
-4. Push to the branch (`git push origin feature/AmazingFeature`)
-5. Open a Pull Request
 
 ## License
 
