@@ -78,22 +78,6 @@ src/
 - Add user reviews and ratings
 - Implement dark mode
 
-## Screenshots
-
-Here are some screenshots of the application:
-
-### Home Page
-![Home Page](screenshots/Screenshot 2025-05-20 082728.png)
-
-### Menu Page
-![Menu Page](screenshots/Screenshot 2025-05-20 082751.png)
-
-### Cart Page
-![Cart Page](screenshots/Screenshot 2025-05-20 082809.png)
-
-### Checkout Page
-![Checkout Page](screenshots/Screenshot 2025-05-20 082830.png)
-
 ## License
 
 This project is licensed under the MIT License - see the LICENSE file for details.
