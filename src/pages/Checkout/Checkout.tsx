@@ -3,10 +3,12 @@ import { useNavigate } from 'react-router-dom';
 import styles from './Checkout.module.css';
 import Button from '../../components/Button/Button';
 import { useCart } from '../../context/CartContext';
+import { useOrders } from '../../context/OrderContext';
 
 const Checkout: React.FC = () => {
   const navigate = useNavigate();
-  const { items, getTotalPrice } = useCart();
+  const { items, getTotalPrice, clearCart } = useCart();
+  const { addOrder } = useOrders();
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -26,9 +28,17 @@ const Checkout: React.FC = () => {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    // TODO: Implement order submission
-    console.log('Order submitted:', formData);
-    navigate('/order-confirmation');
+    addOrder({
+      items: items.map(item => ({
+        id: item.id.toString(),
+        name: item.name,
+        price: item.price,
+        quantity: item.quantity
+      })),
+      deliveryAddress: formData
+    });
+    clearCart();
+    navigate('/cart');
   };
 
   const subtotal = getTotalPrice();

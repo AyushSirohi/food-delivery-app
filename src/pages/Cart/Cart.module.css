@@ -133,6 +133,74 @@
   margin-top: 1rem;
 }
 
+.activeOrders {
+  margin-bottom: 2rem;
+  padding: 1.5rem;
+  background-color: #f8f9fa;
+  border-radius: 12px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.activeOrders h2 {
+  color: #2f3542;
+  margin-bottom: 1.5rem;
+  font-size: 1.5rem;
+}
+
+.orderCard {
+  background-color: white;
+  border-radius: 8px;
+  padding: 1.5rem;
+  margin-bottom: 1rem;
+  border: 1px solid #dee2e6;
+}
+
+.orderInfo h3 {
+  color: #2f3542;
+  margin: 0 0 0.5rem 0;
+  font-size: 1.2rem;
+}
+
+.orderInfo p {
+  color: #495057;
+  margin: 0.5rem 0;
+}
+
+.orderItems {
+  margin: 1rem 0;
+  padding: 1rem;
+  background-color: #f8f9fa;
+  border-radius: 6px;
+}
+
+.orderItem {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.5rem 0;
+  border-bottom: 1px solid #dee2e6;
+}
+
+.orderItem:last-child {
+  border-bottom: none;
+}
+
+.cancelButton {
+  width: 100%;
+  padding: 0.75rem;
+  background-color: #dc3545;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  font-weight: 500;
+}
+
+.cancelButton:hover {
+  background-color: #c82333;
+}
+
 @media (max-width: 768px) {
   .cart {
     padding: 1rem;
