@@ -1,4 +1,4 @@
-import React, { createContext, useContext, useState, ReactNode } from 'react';
+import React, { createContext, useContext, useState, useEffect } from 'react';
 
 interface CartItem {
   id: number;
@@ -16,35 +16,49 @@ interface CartContextType {
   clearCart: () => void;
   getTotalItems: () => number;
   getTotalPrice: () => number;
+  showNotification: boolean;
+  setShowNotification: (show: boolean) => void;
 }
 
 const CartContext = createContext<CartContextType | undefined>(undefined);
 
-export const CartProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
+export const CartProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   const [items, setItems] = useState<CartItem[]>([]);
+  const [showNotification, setShowNotification] = useState(false);
+
+  // Show notification when items are added
+  useEffect(() => {
+    if (items.length > 0) {
+      setShowNotification(true);
+    }
+  }, [items]);
 
   const addToCart = (item: Omit<CartItem, 'quantity'>) => {
-    setItems(currentItems => {
-      const existingItem = currentItems.find(i => i.id === item.id);
+    setItems(prevItems => {
+      const existingItem = prevItems.find(i => i.id === item.id);
       if (existingItem) {
-        return currentItems.map(i =>
+        return prevItems.map(i =>
           i.id === item.id ? { ...i, quantity: i.quantity + 1 } : i
         );
+      } else {
+        return [...prevItems, { ...item, quantity: 1 }];
       }
-      return [...currentItems, { ...item, quantity: 1 }];
     });
   };
 
   const removeFromCart = (id: number) => {
-    setItems(currentItems => currentItems.filter(item => item.id !== id));
+    setItems(prevItems => prevItems.filter(item => item.id !== id));
   };
 
   const updateQuantity = (id: number, change: number) => {
-    setItems(currentItems =>
-      currentItems.map(item => {
+    setItems(prevItems =>
+      prevItems.map(item => {
         if (item.id === id) {
-          const newQuantity = item.quantity + change;
-          return newQuantity > 0 ? { ...item, quantity: newQuantity } : item;
+          const newQuantity = Math.max(0, item.quantity + change);
+          if (newQuantity === 0) {
+            return item;
+          }
+          return { ...item, quantity: newQuantity };
         }
         return item;
       })
@@ -53,6 +67,7 @@ export const CartProvider: React.FC<{ children: ReactNode }> = ({ children }) =>
 
   const clearCart = () => {
     setItems([]);
+    setShowNotification(false);
   };
 
   const getTotalItems = () => {
@@ -73,6 +88,8 @@ export const CartProvider: React.FC<{ children: ReactNode }> = ({ children }) =>
         clearCart,
         getTotalItems,
         getTotalPrice,
+        showNotification,
+        setShowNotification,
       }}
     >
       {children}
